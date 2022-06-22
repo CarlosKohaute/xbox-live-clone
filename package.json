@@ -1,8 +1,8 @@
 {
   "name": "xbox-live-clone",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Projeto da BlueEdTech criando back-end do xbox live",
+  "author": "Carlos Kohaute",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
