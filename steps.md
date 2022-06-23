@@ -2,9 +2,9 @@
 
 Whe need create:
 
-    -users.module.ts
-    -users.controller.ts
-   -users.service.ts
+X    -users.module.ts
+X    -users.controller.ts
+X   -users.service.ts
 
 -users.module.ts:
     -Define module class
@@ -20,7 +20,7 @@ Whe need create:
     -Define controller route
     -Create constructor, relating the service that does not yet exist
     -Define ur routes(create and readAll)
-    -Put on functions calls of service in routes 
+    -Put on functions calls of service in routes
 
 -users.service.ts
     -Define the controller class
