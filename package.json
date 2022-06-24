@@ -67,5 +67,14 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarlosKohaute/xbox-live-clone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CarlosKohaute/xbox-live-clone/issues"
+  },
+  "homepage": "https://github.com/CarlosKohaute/xbox-live-clone#readme"
 }
