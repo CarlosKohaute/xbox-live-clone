@@ -5,7 +5,7 @@ import { uuid } from 'uuidv4';
 
 @Injectable()
 export class UsersService {
-  create(createUserDto: CreateUserDto) {
+  create(createUserDto: CreateUserDto): User {
     const newUser: User = { id: uuid(), ...createUserDto };
 
     this.users.push(newUser);
