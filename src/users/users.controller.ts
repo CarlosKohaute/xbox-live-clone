@@ -20,7 +20,7 @@ export class UsersController {
 
   @Get()
   @ApiOperation({
-    summary: 'Lista todos os usuários',
+    summary: 'Listar todos os usuários',
   })
   getAll(): Promise<User[]> {
     return this.usersService.getAll();
@@ -28,7 +28,7 @@ export class UsersController {
 
   @Get(':id')
   @ApiOperation({
-    summary: 'Lista usuário por id',
+    summary: 'Listar usuário por id',
   })
   getById(@Param('id') id: string): Promise<User> {
     return this.usersService.getById(id);
@@ -36,7 +36,7 @@ export class UsersController {
 
   @Post()
   @ApiOperation({
-    summary: 'Cria um novo usuário',
+    summary: 'Criar um novo usuário',
   })
   create(@Body() dto: CreateUserDto): Promise<User> {
     return this.usersService.create(dto);
