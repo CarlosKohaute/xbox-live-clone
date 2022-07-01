@@ -12,9 +12,9 @@ import { Product } from './entities/product.entity';
 export class ProductsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(dto: CreateProductDto): Promise<Product | void> {
+  async create(data: CreateProductDto): Promise<Product | void> {
     return this.prisma.product
-      .create({ data: dto })
+      .create({ data })
       .catch(this.handleErrorConstraintUnique);
   }
 
@@ -26,7 +26,6 @@ export class ProductsService {
     const product: Product = await this.prisma.product.findUnique({
       where: { id },
     });
-
     if (!product) {
       throw new NotFoundException(`Entrada de id '${id}' não encontrada`);
     }
