@@ -8,8 +8,8 @@ import {
   Post,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { CreateUserDto } from './dto/create-user-dto';
-import { UpdateUserDto } from './dto/update-user-dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/users.entity';
 import { UsersService } from './users.service';
 
@@ -20,7 +20,7 @@ export class UsersController {
 
   @Post()
   @ApiOperation({
-    summary: 'Cria um novo usuário',
+    summary: 'Criar um novo usuário',
   })
   create(@Body() dto: CreateUserDto): Promise<User | void> {
     return this.usersService.create(dto);

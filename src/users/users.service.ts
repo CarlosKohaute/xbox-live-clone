@@ -4,10 +4,10 @@ import {
   UnprocessableEntityException,
 } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { CreateUserDto } from './dto/create-user-dto';
-import { User } from './entities/users.entity';
 import * as bcrypt from 'bcryptjs';
-import { UpdateUserDto } from './dto/update-user-dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { User } from './entities/users.entity';
 
 @Injectable()
 export class UsersService {
