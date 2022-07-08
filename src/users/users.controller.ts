@@ -8,9 +8,9 @@ import {
   Post,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { CreateUserDto } from './dto/create-user-dto';
-import { UpdateUserDto } from './dto/update-user-dto';
-import { User } from './entity/users.entity';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { User } from './entities/users.entity';
 import { UsersService } from './users.service';
 
 @ApiTags('users')
@@ -20,9 +20,9 @@ export class UsersController {
 
   @Post()
   @ApiOperation({
-    summary: 'Cria um novo usuário',
+    summary: 'Criar um novo usuário',
   })
-  create(@Body() dto: CreateUserDto) {
+  create(@Body() dto: CreateUserDto): Promise<User | void> {
     return this.usersService.create(dto);
   }
 
@@ -30,7 +30,7 @@ export class UsersController {
   @ApiOperation({
     summary: 'Lista todos os usuários',
   })
-  findAll() {
+  findAll(): Promise<User[]> {
     return this.usersService.findAll();
   }
 
@@ -38,7 +38,7 @@ export class UsersController {
   @ApiOperation({
     summary: 'Lista usuário por id',
   })
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: string): Promise<User> {
     return this.usersService.findOne(id);
   }
 
@@ -46,13 +46,16 @@ export class UsersController {
   @ApiOperation({
     summary: 'Atualizar um usuário',
   })
-  update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
+  update(
+    @Param('id') id: string,
+    @Body() dto: UpdateUserDto,
+  ): Promise<User | void> {
     return this.usersService.update(id, dto);
   }
 
   @Delete(':id')
   @ApiOperation({
-    summary: 'Deletar um usuário',
+    summary: 'Deleção de um usuário',
   })
   remove(@Param('id') id: string) {
     return this.usersService.remove(id);

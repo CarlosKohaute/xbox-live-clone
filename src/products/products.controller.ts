@@ -38,7 +38,7 @@ export class ProductsController {
   @ApiOperation({
     summary: 'Listagem de um produto',
   })
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: string): Promise<Product> {
     return this.productsService.findOne(id);
   }
 
@@ -46,7 +46,10 @@ export class ProductsController {
   @ApiOperation({
     summary: 'Atualização de um produto',
   })
-  update(@Param('id') id: string, @Body() dto: UpdateProductDto) {
+  update(
+    @Param('id') id: string,
+    @Body() dto: UpdateProductDto,
+  ): Promise<Product | void> {
     return this.productsService.update(id, dto);
   }
 

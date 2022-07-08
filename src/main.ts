@@ -12,9 +12,9 @@ async function bootstrap() {
     .setDescription('API aplicação clone do Xbox Live com fins de estudo')
     .setVersion('1.0.0')
     .addServer('http://localhost:3333')
-    .addTag('Status')
-    .addTag('Users')
-    .addTag('Products')
+    .addTag('status')
+    .addTag('users')
+    .addTag('products')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
