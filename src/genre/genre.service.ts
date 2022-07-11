@@ -11,8 +11,10 @@ import { Genre } from './entities/genre.entity';
 @Injectable()
 export class GenreService {
   constructor(private readonly prisma: PrismaService) {}
-  create(dto: CreateGenreDto): Promise<Genre> {
-    return this.prisma.genre.create({ data: dto });
+  async create(dto: CreateGenreDto): Promise<Genre> {
+    return this.prisma.genre
+      .create({ data: dto })
+      .catch(this.handleErrorConstraintUnique);
   }
 
   findAll(): Promise<Genre[]> {
@@ -46,7 +48,9 @@ export class GenreService {
 
   async update(id: string, dto: UpdateGenreDto): Promise<Genre> {
     await this.verifyIdAndReturnGenre(id);
-    return this.prisma.genre.update({ where: { id }, data: dto });
+    return this.prisma.genre
+      .update({ where: { id }, data: dto })
+      .catch(this.handleErrorConstraintUnique);
   }
 
   async remove(id: string) {
