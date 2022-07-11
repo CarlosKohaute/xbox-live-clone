@@ -24,6 +24,6 @@ export class GenreService {
   }
 
   remove(id: string) {
-    return `This action removes a #${id} genre`;
+    return this.prisma.genre.delete({ where: { id } });
   }
 }
