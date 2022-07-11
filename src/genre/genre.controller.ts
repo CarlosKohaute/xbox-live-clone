@@ -27,7 +27,7 @@ export class GenreController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: string): Promise<Genre> {
     return this.genreService.findOne(id);
   }
 
