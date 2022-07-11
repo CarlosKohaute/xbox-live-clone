@@ -11,8 +11,8 @@ export class GenreService {
     return this.prisma.genre.create({ data: dto });
   }
 
-  findAll() {
-    return 'This action adds a new genre';
+  findAll(): Promise<Genre[]> {
+    return this.prisma.genre.findMany();
   }
 
   findOne(id: string) {

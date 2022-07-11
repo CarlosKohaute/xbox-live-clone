@@ -10,18 +10,19 @@ import {
 import { GenreService } from './genre.service';
 import { CreateGenreDto } from './dto/create-genre.dto';
 import { UpdateGenreDto } from './dto/update-genre.dto';
+import { Genre } from './entities/genre.entity';
 
 @Controller('genre')
 export class GenreController {
   constructor(private readonly genreService: GenreService) {}
 
   @Post()
-  create(@Body() Dto: CreateGenreDto) {
+  create(@Body() Dto: CreateGenreDto): Promise<Genre> {
     return this.genreService.create(Dto);
   }
 
   @Get()
-  findAll() {
+  findAll(): Promise<Genre[]> {
     return this.genreService.findAll();
   }
 
