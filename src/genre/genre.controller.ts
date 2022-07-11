@@ -32,7 +32,7 @@ export class GenreController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() Dto: UpdateGenreDto) {
+  update(@Param('id') id: string, @Body() Dto: UpdateGenreDto): Promise<Genre> {
     return this.genreService.update(id, Dto);
   }
 

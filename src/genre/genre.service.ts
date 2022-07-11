@@ -19,8 +19,8 @@ export class GenreService {
     return this.prisma.genre.findUnique({ where: { id } });
   }
 
-  update(id: string, dto: UpdateGenreDto) {
-    return `This action updates a #${id} genre`;
+  update(id: string, dto: UpdateGenreDto): Promise<Genre> {
+    return this.prisma.genre.update({ where: { id }, data: dto });
   }
 
   remove(id: string) {
