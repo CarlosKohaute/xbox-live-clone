@@ -31,3 +31,12 @@ model Product {
 
   @@map("product")
 }
+
+model Genre{
+  id String @id @default(uuid())
+  genre String @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("Updated_at")
+
+  @@map("genre")
+}
