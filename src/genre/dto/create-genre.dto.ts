@@ -5,7 +5,7 @@ export class CreateGenreDto {
   @IsNotEmpty()
   @IsString()
   @ApiProperty({
-    description: 'Genero do jogo que será criado.',
+    description: 'Gênero do jogo.',
     example: 'Fps',
   })
   genre: string;
