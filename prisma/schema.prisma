@@ -17,6 +17,7 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
+  products Product[]
   @@map("user")
 }
 
@@ -31,6 +32,8 @@ model Product {
 
   category Category @relation(fields: [categoryId], references: [id])
   categoryId String @map("category_id")
+
+  users User[]
   @@map("product")
 }
 
@@ -46,6 +49,8 @@ model Genre{
 model Category{
   id String @id @default(uuid())
   name String @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("Updated_at")
 
   products Product[]
 
