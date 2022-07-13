@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString, IsUrl } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsUrl, IsUUID } from 'class-validator';
 
 export class CreateProductDto {
   @IsString()
@@ -35,4 +35,11 @@ export class CreateProductDto {
       'https://upload.wikimedia.org/wikipedia/pt/thumb/8/82/Gears_of_War.png/200px-Gears_of_War.png',
   })
   image: string;
+
+  @IsUUID()
+  @ApiProperty({
+    description: 'Id da categoria do produto',
+    example: '7de6d3ce-b4cb-435f-b784-8c4935ae0cdc',
+  })
+  categoryId: string;
 }
