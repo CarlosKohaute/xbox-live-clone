@@ -3,12 +3,15 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { Category } from './entities/category.entity';
+import { handleErrorConstraintUnique } from 'src/utils/handle-erros-unique.util';
 
 @Injectable()
 export class CategoriesService {
   constructor(private readonly prisma: PrismaService) {}
-  create(dto: CreateCategoryDto): Promise<Category> {
-    return this.prisma.category.create({ data: dto });
+  async create(dto: CreateCategoryDto): Promise<Category> {
+    return this.prisma.category
+      .create({ data: dto })
+      .catch(handleErrorConstraintUnique);
   }
 
   findAll(): Promise<Category[]> {
@@ -19,8 +22,10 @@ export class CategoriesService {
     return this.prisma.category.findUnique({ where: { id } });
   }
 
-  update(id: string, dto: UpdateCategoryDto): Promise<Category> {
-    return this.prisma.category.update({ where: { id }, data: dto });
+  async update(id: string, dto: UpdateCategoryDto): Promise<Category> {
+    return this.prisma.category
+      .update({ where: { id }, data: dto })
+      .catch(handleErrorConstraintUnique);
   }
 
   remove(id: string) {
