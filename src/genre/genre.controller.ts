@@ -13,7 +13,7 @@ import { UpdateGenreDto } from './dto/update-genre.dto';
 import { Genre } from './entities/genre.entity';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('Genêros')
+@ApiTags('Gêneros')
 @Controller('genre')
 export class GenreController {
   constructor(private readonly genreService: GenreService) {}
