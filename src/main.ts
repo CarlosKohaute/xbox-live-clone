@@ -15,7 +15,7 @@ async function bootstrap() {
     .addTag('Status')
     .addTag('Users')
     .addTag('Products')
-    .addTag('Genre')
+    .addTag('Gêneros')
     .addTag('Categories')
     .build();
 
