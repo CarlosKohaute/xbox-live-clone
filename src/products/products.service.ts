@@ -16,7 +16,7 @@ export class ProductsService {
   }
 
   findAll(): Promise<Product[]> {
-    return this.prisma.product.findMany();
+    return this.prisma.product.findMany({ include: { category: true } });
   }
 
   async verifyIdAndReturnProduct(id: string): Promise<Product> {
