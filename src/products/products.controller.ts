@@ -12,7 +12,8 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Product } from './entities/product.entity';
-import { FavoriteProductDto } from './dto/favorite-Product.dto';
+import { FavoriteProductDto } from '../favorites/dto/favorite.dto';
+import { Favorite } from 'src/favorites/entities/favorite.entitie';
 
 @ApiTags('Products')
 @Controller('products')
@@ -66,7 +67,15 @@ export class ProductsController {
   @ApiOperation({
     summary: 'Favoritar um jogo',
   })
-  favorite(@Body() dto: FavoriteProductDto) {
+  favorite(@Body() dto: FavoriteProductDto): Promise<Favorite> {
     return this.productsService.favorite(dto);
+  }
+
+  @Delete('favorite/:id')
+  @ApiOperation({
+    summary: 'Desfavoritar o jogo',
+  })
+  unfav(@Param('id') id: string) {
+    return this.productsService.unfav(id);
   }
 }

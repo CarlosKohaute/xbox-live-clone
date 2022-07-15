@@ -1,10 +1,11 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, Param } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handleErrorConstraintUnique } from 'src/utils/handle-erros-unique.util';
 import { CreateProductDto } from './dto/create-product.dto';
-import { FavoriteProductDto } from './dto/favorite-Product.dto';
+import { FavoriteProductDto } from '../favorites/dto/favorite.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
+import { Favorite } from 'src/favorites/entities/favorite.entitie';
 
 @Injectable()
 export class ProductsService {
@@ -48,7 +49,10 @@ export class ProductsService {
 
     return this.prisma.product.delete({ where: { id } });
   }
-  favorite(dto: FavoriteProductDto) {
+  favorite(dto: FavoriteProductDto): Promise<Favorite> {
     return this.prisma.favorite.create({ data: dto });
+  }
+  unfav(id: string) {
+    return this.prisma.favorite.delete({ where: { id } });
   }
 }
