@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, Param } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handleErrorConstraintUnique } from 'src/utils/handle-erros-unique.util';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -54,5 +54,17 @@ export class ProductsService {
   }
   unfav(id: string) {
     return this.prisma.favorite.delete({ where: { id } });
+  }
+  async findUsersLiked(id: string) {
+    const product: Product = await this.prisma.product.findUnique({
+      where: { id },
+    });
+    return this.prisma.favorite.findMany({
+      where: { productName: product.name },
+      select: {
+        productName: true,
+        user: { select: { name: true, email: true } },
+      },
+    });
   }
 }
