@@ -5,6 +5,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/users.entity';
 import { handleErrorConstraintUnique } from 'src/utils/handle-erros-unique.util';
+import { Favorite } from 'src/favorites/entities/favorite.entitie';
 
 @Injectable()
 export class UsersService {
@@ -50,6 +51,11 @@ export class UsersService {
 
   findOne(id: string): Promise<User> {
     return this.verifyIdAndReturnUser(id);
+  }
+  findFavoriteProducts(id: string): Promise<Favorite[]> {
+    return this.prisma.favorite.findMany({
+      where: { userId: id },
+    });
   }
 
   async update(id: string, dto: UpdateUserDto): Promise<User | void> {
