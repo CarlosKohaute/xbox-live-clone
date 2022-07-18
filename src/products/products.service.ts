@@ -7,6 +7,7 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
 import { Favorite } from 'src/favorites/entities/favorite.entitie';
 import { User } from 'src/users/entities/users.entity';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class ProductsService {
@@ -79,8 +80,20 @@ export class ProductsService {
         `Entrada de id '${dto.userId}' não encontrada`,
       );
     }
+    const data: Prisma.FavoriteCreateInput = {
+      user: {
+        connect: {
+          id: dto.userId,
+        },
+      },
+      product: {
+        connect: {
+          name: dto.productName,
+        },
+      },
+    };
 
-    return this.prisma.favorite.create({ data: dto });
+    return this.prisma.favorite.create({ data });
   }
 
   async unfav(id: string) {
