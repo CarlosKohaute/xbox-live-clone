@@ -60,6 +60,8 @@ export class ProductsService {
 
     return this.prisma.product.delete({ where: { id } });
   }
+
+  //recriar os módulos de fav
   async favorite(dto: FavoriteProductDto): Promise<Favorite> {
     const product: Product = await this.prisma.product.findUnique({
       where: { name: dto.productName },
