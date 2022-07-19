@@ -26,8 +26,8 @@ export class OrdersService {
       data,
       select: {
         id: true,
-        genre: true,
-        userId: true,
+        genre: { select: { genre: true } },
+        user: { select: { id: true, name: true } },
         createdAt: true,
         products: { select: { name: true } },
       },
@@ -38,8 +38,8 @@ export class OrdersService {
     return this.prisma.order.findMany({
       select: {
         id: true,
-        genre: true,
-        userId: true,
+        genre: { select: { genre: true } },
+        user: { select: { id: true, name: true } },
         createdAt: true,
         products: { select: { name: true } },
       },
@@ -47,7 +47,16 @@ export class OrdersService {
   }
 
   findOne(id: string) {
-    return `This action returns a #${id} order`;
+    return this.prisma.order.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        genre: { select: { genre: true } },
+        user: { select: { id: true, name: true } },
+        createdAt: true,
+        products: { select: { name: true } },
+      },
+    });
   }
 
   update(id: string, dto: UpdateOrderDto) {
