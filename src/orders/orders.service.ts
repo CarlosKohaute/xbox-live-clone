@@ -59,6 +59,7 @@ export class OrdersService {
     });
   }
 
+  // finalizar rota de criação
   update(id: string, dto: UpdateOrderDto) {
     return `This action updates a #${id} order`;
   }
