@@ -69,6 +69,7 @@ export class OrdersService {
     return `This action updates a #${id} order`;
   }
 
+  //finalizar a rota de deleção
   remove(id: string) {
     return `This action removes a #${id} order`;
   }
