@@ -8,6 +8,10 @@ import { UpdateOrderDto } from './dto/update-order.dto';
 export class OrdersService {
   constructor(private readonly prisma: PrismaService) {}
   create(dto: CreateOrderDto) {
+    const productsIds = dto.products.map((element) => ({
+      productId: element.productId,
+    }));
+
     const data: Prisma.OrderCreateInput = {
       genre: {
         connect: { genre: dto.genre },
@@ -18,7 +22,9 @@ export class OrdersService {
         },
       },
       products: {
-        connect: dto.products.map((element) => ({ id: element })),
+        createMany: {
+          data: productsIds,
+        },
       },
     };
 
@@ -27,9 +33,8 @@ export class OrdersService {
       select: {
         id: true,
         genre: { select: { genre: true } },
-        user: { select: { id: true, name: true } },
-        createdAt: true,
-        products: { select: { name: true } },
+        user: { select: { name: true } },
+        products: { select: { product: { select: { name: true } } } },
       },
     });
   }
@@ -41,7 +46,7 @@ export class OrdersService {
         genre: { select: { genre: true } },
         user: { select: { id: true, name: true } },
         createdAt: true,
-        products: { select: { name: true } },
+        products: { select: { product: { select: { name: true } } } },
       },
     });
   }
@@ -54,7 +59,7 @@ export class OrdersService {
         genre: { select: { genre: true } },
         user: { select: { id: true, name: true } },
         createdAt: true,
-        products: { select: { name: true } },
+        products: { select: { product: { select: { name: true } } } },
       },
     });
   }
