@@ -17,10 +17,10 @@ Foi utilizado também autenticação, filtragem de buscas, documentação, cript
 
 ## Pré-requisitos
 
-**Node** com versão superior ou igual 16.13.2 - [Node Download](https://nodejs.org/pt-br/download/)
-**NPM** com versão superior ou igual 8.1.2 - [Npm Download](https://www.npmjs.com/package/download)
-**Nest.JS** com versão superior ou igual 8.2.6 - [Nest Download](https://docs.nestjs.com/)
-**PostgreSQL** com versão superior ou igual 8.2.6 - [PostgreSQL Download](https://www.postgresql.org/download/)
+**Node** com versão superior ou igual 16.13.2 - [Node Download](https://nodejs.org/pt-br/download/)<br>
+**NPM** com versão superior ou igual 8.1.2 - [Npm Download](https://www.npmjs.com/package/download)<br>
+**Nest.JS** com versão superior ou igual 8.2.6 - [Nest Download](https://docs.nestjs.com/)<br>
+**PostgreSQL** com versão superior ou igual 8.2.6 - [PostgreSQL Download](https://www.postgresql.org/download/)<br>
 
 ## Instalação
 
