@@ -16,7 +16,6 @@ async function bootstrap() {
     .setTitle('Xbox Live Clone ')
     .setDescription('API aplicação clone do Xbox Live com fins de estudo')
     .setVersion('1.0.0')
-    .addServer('http://localhost:3333')
     .addTag('Status')
     .addTag('Users')
     .addTag('Products')
