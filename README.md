@@ -11,7 +11,9 @@ Foi utilizado também autenticação, filtragem de buscas, documentação, cript
   <img align="center" alt="Carlos-NodeJS" height="40" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg">
   <img align="center" alt="Carlos=Typescript" height="40" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
   <img align="center" alt="Carlos-Nest" height="40" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" />
+  <img align="center" alt="Carlos-Prisma" height="40" width="40" src="./src/images/prisma-4.svg">
   <img align="center" alt="Carlos-PostgreSQL" height="40" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg">
+
 
   </div>
 
